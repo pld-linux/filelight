@@ -10,9 +10,8 @@ Source0:	http://www.methylblue.com/filelight/%{name}-%{version}.tar.gz
 # Source0-md5:	a45ded39158a3de9762aae1a8333f768
 URL:		http://www.methylblue.com/filelight/
 BuildRequires:	kdebase-devel >= 3.0
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 Filelight graphically represents a file system as a set of concentric
@@ -34,9 +33,7 @@ zbli¿on± do KDirstat, ale w bardziej zwiêz³ej formie.
 %setup -q
 
 %build
-kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_appsdir="%{_applnkdir}"; export kde_appsdir
-
+kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 %configure \
 	--prefix `kde-config --prefix`  \
 	--enable-final \
@@ -50,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_desktopdir}
+mv -f $RPM_BUILD_ROOT{%{_datadir}/Utilities,%{_desktopdir}}/%{name}.desktop
+
 %find_lang %{name} --with-kde
 
 %clean
@@ -59,6 +59,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/apps/%{name}
-%{_applnkdir}/Utilities/%{name}.desktop
+%{_desktopdir}/%{name}.desktop
 %{_datadir}/config/%{name}rc
 %{_iconsdir}/*/*/apps/%{name}.png
