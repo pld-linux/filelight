@@ -5,10 +5,10 @@ Version:	0.6.4
 Release:	1
 License:	GPL
 Vendor:		Max Howell <max.howell@methylblue.com>
-Url:		http://www.methylblue.com/filelight
 Group:		X11/Applications
-Source0:	http://www.methylblue.com/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://www.methylblue.com/filelight/%{name}-%{version}.tar.gz
 # Source0-md5:	a45ded39158a3de9762aae1a8333f768
+URL:		http://www.methylblue.com/filelight/
 BuildRequires:	kdebase-devel >= 3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,7 +35,6 @@ zbli¿on± do KDirstat, ale w bardziej zwiêz³ej formie.
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 
 %configure \
@@ -62,4 +61,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/%{name}
 %{_applnkdir}/Utilities/%{name}.desktop
 %{_datadir}/config/%{name}rc
-%{_pixmapsdir}/*/*/apps/%{name}.png
+%{_iconsdir}/*/*/apps/%{name}.png
