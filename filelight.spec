@@ -8,8 +8,8 @@ Vendor:		Max Howell <max.howell@methylblue.com>
 Url:		http://www.methylblue.com/filelight
 
 Group:		X11/Applications
-Source0:	http://www.methylblue.com/%{name}/%{name}-%{version}-%{release}.tar.gz
-# Source0-md5:	363c71fa5125a57aa0252ffa8d65c647
+Source0:	http://www.methylblue.com/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	a45ded39158a3de9762aae1a8333f768
 BuildRequires:	kdebase-devel >= 3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
