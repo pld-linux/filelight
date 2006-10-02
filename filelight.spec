@@ -1,13 +1,14 @@
 Summary:	Graphical disk usage statistics
 Summary(pl):	Graficzne statystyki zajêcia dysku
 Name:		filelight
-Version:	0.6.4
+Version:	1.0
 Release:	1
 License:	GPL
-Vendor:		Max Howell <max.howell@methylblue.com>
 Group:		X11/Applications
-Source0:	http://www.methylblue.com/filelight/%{name}-%{version}.tar.gz
-# Source0-md5:	a45ded39158a3de9762aae1a8333f768
+Source0:	http://www.methylblue.com/filelight/packages/%{name}-%{version}.tar.bz2
+# Source0-md5:	aa885e53e09f40e7fdd371395140b957
+Source1:	http://www.methylblue.com/filelight/packages/%{name}-%{version}-i18n-20060901.tar.bz2
+# Source1-md5:	7e556cbb36da96afa8105deb50840989
 URL:		http://www.methylblue.com/filelight/
 BuildRequires:	kdebase-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -30,15 +31,17 @@ natomiast katalogi zawieraj± segmenty-dzieci. Filelight posiada funkcjonalno¶æ
 zbli¿on± do KDirstat, ale w bardziej zwiêz³ej formie.
 
 %prep
-%setup -q
+%setup -q -a1
 
 %build
-kde_htmldir="%{_kdedocdir}"; export kde_htmldir
-%configure \
-	--prefix `kde-config --prefix`  \
-	--enable-final \
-	--disable-debug
+%{__make} -f admin/Makefile.common
+%configure
+%{__make}
 
+cd %{name}-%{version}-i18n-20060901
+%configure
+cd po
+find . -name '*.gmo' -exec rm {} \;
 %{__make}
 
 %install
@@ -47,8 +50,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_desktopdir}
-mv -f $RPM_BUILD_ROOT{%{_datadir}/Utilities,%{_desktopdir}}/%{name}.desktop
+cd %{name}-%{version}-i18n-20060901/po
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+cd -
 
 %find_lang %{name} --with-kde
 
@@ -58,7 +63,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/%{name}
+%{_desktopdir}/kde/*.desktop
 %{_datadir}/apps/%{name}
-%{_desktopdir}/%{name}.desktop
-%{_datadir}/config/%{name}rc
-%{_iconsdir}/*/*/apps/%{name}.png
+%{_datadir}/config/*
+%{_datadir}/services/*
+%{_iconsdir}/*/*/*/*.png
+%%attr(755,root,root) %{_libdir}/kde3/*.so
+%{_libdir}/kde3/*.la
