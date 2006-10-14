@@ -9,6 +9,7 @@ Source0:	http://www.methylblue.com/filelight/packages/%{name}-%{version}.tar.bz2
 # Source0-md5:	aa885e53e09f40e7fdd371395140b957
 Source1:	http://www.methylblue.com/filelight/packages/%{name}-%{version}-i18n-20060901.tar.bz2
 # Source1-md5:	7e556cbb36da96afa8105deb50840989
+Patch0:		kde-ac260-lt.patch
 URL:		http://www.methylblue.com/filelight/
 BuildRequires:	kdebase-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -32,6 +33,7 @@ zbli¿on± do KDirstat, ale w bardziej zwiêz³ej formie.
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 %build
 %{__make} -f admin/Makefile.common
