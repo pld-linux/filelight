@@ -1,5 +1,5 @@
 Summary:	Graphical disk usage statistics
-Summary(pl):	Graficzne statystyki zajêcia dysku
+Summary(pl.UTF-8):   Graficzne statystyki zajÄ™cia dysku
 Name:		filelight
 Version:	1.0
 Release:	1
@@ -23,13 +23,13 @@ with each segment's size being proportional to the file's size and
 directories having child segments. Filelight performs a similar
 function to KDirstat, but in a more compact fashion.
 
-%description -l pl
-Filelight przedstawia graficznie system plików jako zbiór koncentrycznych, 
-posegmentowanych pier¶cieni, wskazuj±cych gdzie przestrzeñ dyskowa jest 
-u¿ywana. Segmenty, rozchodz±ce siê od ¶rodka, reprezentuj± pliki (w³±czaj±c
-w to katalogi), a rozmiar ka¿dego z nich jest proporcjonalny do rozmiaru pliku,
-natomiast katalogi zawieraj± segmenty-dzieci. Filelight posiada funkcjonalno¶æ
-zbli¿on± do KDirstat, ale w bardziej zwiêz³ej formie.
+%description -l pl.UTF-8
+Filelight przedstawia graficznie system plikÃ³w jako zbiÃ³r koncentrycznych, 
+posegmentowanych pierÅ›cieni, wskazujÄ…cych gdzie przestrzeÅ„ dyskowa jest 
+uÅ¼ywana. Segmenty, rozchodzÄ…ce siÄ™ od Å›rodka, reprezentujÄ… pliki (wÅ‚Ä…czajÄ…c
+w to katalogi), a rozmiar kaÅ¼dego z nich jest proporcjonalny do rozmiaru pliku,
+natomiast katalogi zawierajÄ… segmenty-dzieci. Filelight posiada funkcjonalnoÅ›Ä‡
+zbliÅ¼onÄ… do KDirstat, ale w bardziej zwiÄ™zÅ‚ej formie.
 
 %prep
 %setup -q -a1
