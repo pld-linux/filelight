@@ -1,5 +1,5 @@
 Summary:	Graphical disk usage statistics
-Summary(pl.UTF-8):   Graficzne statystyki zajęcia dysku
+Summary(pl.UTF-8):	Graficzne statystyki zajęcia dysku
 Name:		filelight
 Version:	1.0
 Release:	1
