@@ -2,7 +2,7 @@ Summary:	Graphical disk usage statistics
 Summary(pl.UTF-8):	Graficzne statystyki zajęcia dysku
 Name:		filelight
 Version:	1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.methylblue.com/filelight/packages/%{name}-%{version}.tar.bz2
@@ -13,6 +13,8 @@ Patch0:		kde-ac260-lt.patch
 URL:		http://www.methylblue.com/filelight/
 BuildRequires:	kdebase-devel >= 3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,6 +59,8 @@ cd %{name}-%{version}-i18n-20060901/po
 	DESTDIR=$RPM_BUILD_ROOT
 cd -
 
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name} --with-kde
 
 %clean
