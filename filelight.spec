@@ -2,7 +2,7 @@ Summary:	Graphical disk usage statistics
 Summary(pl.UTF-8):	Graficzne statystyki zajęcia dysku
 Name:		filelight
 Version:	1.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.methylblue.com/filelight/packages/%{name}-%{version}.tar.bz2
